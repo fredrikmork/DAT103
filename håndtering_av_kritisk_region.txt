@@ -1,0 +1,24 @@
+
+
+
+
+la Mutex være Semaphore(1), og tom være Semaphore(n) og full være Semaphore(0)
+og vi ser på P0 og P1 i forhold til den globale resursen Bufferliste som har et maksimum antall lagringskapasitet.
+viser hvordan man håndterer en kritisk region ved bruk av Semaforer:
+
+
+	tom.wait()
+	mutex.wait()
+	Kritisk region
+	P0 legger til element i bufferliste
+	Kritisk region
+	mutex.signal()
+	full.signal()
+
+	full.wait()
+	mutex.wait()
+   	Kritisk region
+	P1 henter et element ut fra bufferlisten
+	Kritisk region
+	mutex.signal()
+	tom.signal()
