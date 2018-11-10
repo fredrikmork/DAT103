@@ -14,7 +14,7 @@ public class Buffer implements BufferIF{
 	 * @param produce
 	 *            an item in next_produced
 	 */
-	public void add(Integer item) {
+	public void consume(Integer item) {
 		try {
 			empty.waitS();
 			mutex.waitS();

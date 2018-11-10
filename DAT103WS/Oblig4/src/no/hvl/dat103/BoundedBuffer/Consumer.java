@@ -6,7 +6,7 @@ public class Consumer extends Thread {
 
 	public Consumer(BufferIF buffer) {
 		this.buffer = buffer;
-
+ 
 	}
 
 	@Override

@@ -15,7 +15,7 @@ public class Producer extends Thread{
 	public void run() {
 		while (true) {
 			Integer item = rand.nextInt(100);
-	        buffer.add(item);
+	        buffer.consume(item);
 			System.out.println("Produced: " + item + "\tAntall på lager: " + buffer.antall());
 	        try {
 	            Thread.sleep(40);

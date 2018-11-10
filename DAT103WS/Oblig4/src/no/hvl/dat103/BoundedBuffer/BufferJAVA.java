@@ -14,7 +14,7 @@ public class BufferJAVA implements BufferIF{
 	 * @param produce
 	 *            an item in next_produced
 	 */
-	public void add(Integer item) {
+	public void consume(Integer item) {
 		try {
 			empty.acquire();
 			mutex.acquire();
