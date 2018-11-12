@@ -21,8 +21,14 @@ public class DiningPhilosophers {
 			chopstick[i] = new Semaphore(1);
 		}
 		for (int i = 0; i < filo.length; i++) {
-			filo[i] = new Philosopher(chopstick[i], chopstick[(i + 1) % filo.length]);
-			filo[i].start();
+			if (i == filo.length -1) {
+				filo[i] = new Philosopher(chopstick[(i + 1) % filo.length], chopstick[i]);
+				filo[i].start();
+			} else {
+				filo[i] = new Philosopher(chopstick[i], chopstick[(i + 1) % filo.length]);
+				filo[i].start();
+			}
+			
 
 		}
 	}
