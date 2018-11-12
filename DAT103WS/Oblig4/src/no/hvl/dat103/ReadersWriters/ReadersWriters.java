@@ -9,10 +9,10 @@ public class ReadersWriters {
 		//Java's semaphore
 		ReadJAVA readJAVA = new ReadJAVA();
 		WriteJAVA WriteJAVA = new WriteJAVA();
-		//read.start();
-		//write.start();
-		readJAVA.start();
-		WriteJAVA.start();
+		read.start();
+		write.start();
+		//readJAVA.start();
+		//WriteJAVA.start();
 	}
 
 }
