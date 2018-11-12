@@ -16,9 +16,9 @@ public class Philosopher extends Thread {
 				left.waitS();
 				right.waitS();
 				System.out.println("Filosof: " + currentThread().getName() + " spiser litt.");
-				sleep((int)(Math.random()*100));
-				right.signal();
+				sleep(100);
 				left.signal();
+				right.signal();
 				System.out.println("Filosof: " + currentThread().getName() + " tenker litt.");
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());

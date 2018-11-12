@@ -2,9 +2,13 @@ package no.hvl.dat103.ReadersWriters;
 
 public class Write extends Thread {
 	Semaphore rw_mutex = new Semaphore(1);
-	Semaphore mutex = new Semaphore(1);
-	int read_count = 0;
+	Semaphore mutex;
 
+//	public Write (Semaphore rw_mutex, Semaphore mutex) {
+//		this.rw_mutex = rw_mutex;
+//		this.mutex = mutex;
+//	}
+	
 	@Override
 	public void run() {
 		while (true) {

@@ -18,7 +18,7 @@ public class DiningPhilosophers {
 		Semaphore chopstick[] = new Semaphore[filo.length];
 		
 		for (int i = 0; i < chopstick.length; i++) {
-			chopstick[i] = new Semaphore(filo.length);
+			chopstick[i] = new Semaphore(1);
 		}
 		for (int i = 0; i < filo.length; i++) {
 			if (i != filo.length - 1) {
