@@ -23,6 +23,7 @@ public class ReadJAVA extends Thread{
 				sleep(150);
 				System.out.println("Thread " + currentThread().getName() + " has finished reading");
 				// Releasing section
+				mutex.acquire();
 				read_count--;
 				if (read_count == 0) {
 					rw_mutex.release();
