@@ -1,5 +1,7 @@
 package no.hvl.dat103.DiningPhilosophers;
 
+import no.hvl.dat103.Semaphore.Semaphore;
+
 public class DiningPhilosophers {
 	// Semaphore chopstick[5];
 	// do {

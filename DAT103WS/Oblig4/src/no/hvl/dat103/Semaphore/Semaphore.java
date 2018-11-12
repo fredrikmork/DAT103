@@ -1,4 +1,4 @@
-package no.hvl.dat103.DiningPhilosophers;
+package no.hvl.dat103.Semaphore;
 
 public class Semaphore {
 	// Allow for both counting or mutex semaphores

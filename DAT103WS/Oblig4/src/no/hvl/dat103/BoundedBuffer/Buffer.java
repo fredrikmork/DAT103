@@ -2,6 +2,8 @@ package no.hvl.dat103.BoundedBuffer;
 
 import java.util.LinkedList;
 
+import no.hvl.dat103.Semaphore.Semaphore;
+
 public class Buffer implements BufferIF{
 	private final static int SIZE = 10;
 	private LinkedList<Integer> buffer = new LinkedList<Integer>();

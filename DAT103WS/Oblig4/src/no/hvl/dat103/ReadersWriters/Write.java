@@ -1,5 +1,7 @@
 package no.hvl.dat103.ReadersWriters;
 
+import no.hvl.dat103.Semaphore.Semaphore;
+
 public class Write extends Thread {
 	Semaphore rw_mutex = new Semaphore(1);
 	Semaphore mutex;
