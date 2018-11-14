@@ -1,13 +1,14 @@
 package no.hvl.dat103.ReadersWriters;
 
 import java.util.concurrent.Semaphore;
+import no.hvl.dat103.Semaphore.Number;
 
 public class ReadJAVA extends Thread{
 	Semaphore rw_mutex;
 	Semaphore mutex;
-	int read_count;
+	Number read_count;
 	
-	public ReadJAVA (Semaphore rw_mutex, Semaphore mutex, int read_count) {
+	public ReadJAVA (Semaphore rw_mutex, Semaphore mutex, Number read_count) {
 		this.rw_mutex = rw_mutex;
 		this.mutex = mutex;
 		this.read_count = read_count;
@@ -19,8 +20,8 @@ public class ReadJAVA extends Thread{
 			try {
 				// Acquire section
 				mutex.acquire();
-				read_count++;
-				if (read_count == 1) {
+				int rc = read_count.increase();
+				if (rc == 1) {
 					rw_mutex.acquire();
 				}
 				mutex.release();
@@ -30,8 +31,8 @@ public class ReadJAVA extends Thread{
 				System.out.println("Thread " + currentThread().getName() + " has finished reading");
 				// Releasing section
 				mutex.acquire();
-				read_count--;
-				if (read_count == 0) {
+				rc = read_count.decrease();
+				if (rc == 0) {
 					rw_mutex.release();
 				}
 				mutex.release();

@@ -1,13 +1,14 @@
 package no.hvl.dat103.ReadersWriters;
 
 import java.util.concurrent.Semaphore;
+import no.hvl.dat103.Semaphore.Number;
 
 public class ReaderWriterJAVATEST {
 
 	public static void main(String[] args) {
 		Semaphore rw_mutex = new Semaphore(1);
 		Semaphore mutex = new Semaphore(1);
-		int read_count = 0;
+		Number read_count = new Number();
 
 		//Java's semaphore
 		ReadJAVA readJAVA = new ReadJAVA(rw_mutex, mutex, read_count);
