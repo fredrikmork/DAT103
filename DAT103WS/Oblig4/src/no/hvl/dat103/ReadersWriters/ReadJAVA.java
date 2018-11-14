@@ -3,9 +3,15 @@ package no.hvl.dat103.ReadersWriters;
 import java.util.concurrent.Semaphore;
 
 public class ReadJAVA extends Thread{
-	Semaphore rw_mutex = new Semaphore(1);
-	Semaphore mutex = new Semaphore(1);
-	int read_count = 0;
+	Semaphore rw_mutex;
+	Semaphore mutex;
+	int read_count;
+	
+	public ReadJAVA (Semaphore rw_mutex, Semaphore mutex, int read_count) {
+		this.rw_mutex = rw_mutex;
+		this.mutex = mutex;
+		this.read_count = read_count;
+	}
 	
 	@Override
 	public void run() {
@@ -29,7 +35,7 @@ public class ReadJAVA extends Thread{
 					rw_mutex.release();
 				}
 				mutex.release();
-
+				sleep(125);
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
 			}

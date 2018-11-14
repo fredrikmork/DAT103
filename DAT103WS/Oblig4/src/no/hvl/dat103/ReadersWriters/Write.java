@@ -3,13 +3,11 @@ package no.hvl.dat103.ReadersWriters;
 import no.hvl.dat103.Semaphore.Semaphore;
 
 public class Write extends Thread {
-	Semaphore rw_mutex = new Semaphore(1);
-	Semaphore mutex;
-
-//	public Write (Semaphore rw_mutex, Semaphore mutex) {
-//		this.rw_mutex = rw_mutex;
-//		this.mutex = mutex;
-//	}
+	Semaphore rw_mutex;
+	
+	public Write (Semaphore rw_mutex) {
+		this.rw_mutex = rw_mutex;
+	}
 	
 	@Override
 	public void run() {
@@ -21,6 +19,7 @@ public class Write extends Thread {
 				sleep(100);
 				System.out.println("Thread " + currentThread().getName() + " has finished writing");
 				rw_mutex.signal();
+				sleep(75);
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
 			}

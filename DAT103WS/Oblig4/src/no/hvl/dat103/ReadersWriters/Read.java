@@ -1,17 +1,18 @@
 package no.hvl.dat103.ReadersWriters;
 
 import no.hvl.dat103.Semaphore.Semaphore;
+import no.hvl.dat103.Semaphore.Number;
 
 public class Read extends Thread {
-	Semaphore rw_mutex = new Semaphore(1);
-	Semaphore mutex = new Semaphore(1);
-	int read_count = 0;
+	Semaphore rw_mutex;
+	Semaphore mutex;
+	Number read_count;
 	
-//	public Read (Semaphore rw_mutex, Semaphore mutex, int read_count) {
-//		this.rw_mutex = rw_mutex;
-//		this.mutex = mutex;
-//		this.read_count = read_count;
-//	}
+	public Read (Semaphore rw_mutex, Semaphore mutex, Number read_count) {
+		this.rw_mutex = rw_mutex;
+		this.mutex = mutex;
+		this.read_count = read_count;
+	}
 
 	@Override
 	public void run() {
@@ -19,23 +20,23 @@ public class Read extends Thread {
 			try {
 				// Acquire section
 				mutex.waitS();
-				read_count++;
-				if (read_count == 1) {
+				int rc = read_count.increase();
+				if (rc == 1) {
 					rw_mutex.waitS();
 				}
 				mutex.signal();
 				// Reading section
 				System.out.println("Thread " + currentThread().getName() + " is reading");
-				sleep(150);
+				sleep(100);
 				System.out.println("Thread " + currentThread().getName() + " has finished reading");
 				// Releasing section
 				mutex.waitS();
-				read_count--;
-				if (read_count == 0) {
+				rc = read_count.decrease();
+				if (rc == 0) {
 					rw_mutex.signal();
 				}
 				mutex.signal();
-
+				sleep(75);
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
 			}
